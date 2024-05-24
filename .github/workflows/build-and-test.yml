@@ -1,0 +1,26 @@
+name: Build, lint and test the solution
+on: [push]
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+    name: Job to lint and test the solution
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Lint with Flake8
+        uses: ./.github/actions/lint
+      - name: Test
+        uses: ./.github/actions/test
+  build:
+    runs-on: ubuntu-latest
+    name: Job to build the solution
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build app image
+        run: |
+          docker-compose up -d
+          echo "Image size:" $(docker images flask-api --format "{{.Size}}")
+          echo "Response from root endpoint:" $(curl -s 127.0.0.1:8080)
+          echo "Response from coffee endpoint:" $(curl -s 127.0.0.1:8080/coffee)

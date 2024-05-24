@@ -1,0 +1,18 @@
+name: 'Lint with Flake8'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup python version 3.8
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.8"
+    - name: Install dependencies
+      shell: bash
+      run: |
+        pip3 install -r flask_api/requirements.txt
+    - name: Run lint
+      shell: bash
+      run: flake8 flask_api/app.py
