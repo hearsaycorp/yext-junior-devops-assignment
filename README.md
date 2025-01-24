@@ -1,8 +1,8 @@
-# Hearsay Junior DevOps Assignment
+# Yext Junior DevOps Assignment
 
 ## Introduction
 
-Welcome to the DevOps assignment part of your Hearsay journey! We present you
+Welcome to the DevOps assignment part of your Yext journey! We present you
 with a small set of tasks that will help us decide your skill level with various
 tools and technologies.
 
